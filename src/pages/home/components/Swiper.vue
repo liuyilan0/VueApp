@@ -40,7 +40,8 @@ export default {
     overflow:hidden
     height:0
     width: 100%
-    padding-bottom:31.25%    /** 高/宽的比例 */
+    background: red
+    padding-bottom:26.66%    /** 高/宽的比例 */
     .swiper-image
       width: 100%
 </style>

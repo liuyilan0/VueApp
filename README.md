@@ -33,17 +33,54 @@ npm uninstall vue-awesome-swiper@2.6.7 --save   轮播图
 
 安装完依赖库需要重启npm  npm run start
 
+/****  关于css样式  ****/
+
 ## 导入的css样式
 border.css  解决在2倍屏或3倍屏下1px显示转化的问题
 reset.css   通用的css样式
+
+## iconfont相关的css样式  （如果更新了iconfont图标，需要替换一下文件）
+iconfont
+  iconfont.eot
+  iconfont.svg
+  iconfont.ttf
+  iconfont.woff
+iconfont.css
+
+## 自定义css样式  在文件中引入css样式 需要使用 @import   例如：@import '~styles/mixins.styl';
+mixins.styl    // 常用的自定义样式方法
+variable.styl   // 一些常用的自定义样式
+
+/****  关于一些配置修改  ****/
+
+##  自定义文件路径别名
+在webpack.base.conf.js 中修改alias 设置成想要的简介路径
+
+/****  关于项目结构  ****/
 
 ## 项目结构
 
 res
   assets
     styles
+      iconfont
+        iconfont.eot
+        iconfont.svg
+        iconfont.ttf
+        iconfont.woff
+      iconfont.css
+      border.css
+      mixins.styl
+      reset.css
+      variable.styl
   pages
     home
+      Home.vue
+      components
+        Header.vue
+        Icon.vue
+        Swiper.vue
+        Recommend.vue
   router
     index.js
   App.vue

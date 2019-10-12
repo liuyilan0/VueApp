@@ -4,7 +4,7 @@
       <span class="iconfont">&#xe613;</span>
     </div>
     <div class="header-input">
-      <span class="iconfont">&#xe604;</span>欢迎使用
+      <span class="iconfont">&#xe600;</span>欢迎使用
     </div>
     <div class="header-right">
       城市<span class="iconfont">&#xe607;</span>
