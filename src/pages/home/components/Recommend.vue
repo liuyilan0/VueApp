@@ -2,7 +2,7 @@
   <div>
     <div class='recommend-title'>推荐景点</div>
     <ul>
-      <li v-for="item in recommendList" :key='item.id' class='recommend-item-view'>
+      <router-link tag="li" :to="'/detail/' + item.id" v-for="item in recommendList" :key='item.id' class='recommend-item-view'>
         <img class="recommend-img" :src="item.imgUrl"/>
         <div class="recommend-content">
           <p class="item-name">{{item.title}}</p>
@@ -20,7 +20,7 @@
             <span class="item-place">{{item.place}}</span>
           </p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
       flex: 1
       padding: .2rem
       .item-name
-        font-size:.22rem
+        font-size:.26rem
         line-height: .54rem
       .item-level
         font-size: .22rem
