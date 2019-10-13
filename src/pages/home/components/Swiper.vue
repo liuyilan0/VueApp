@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption" ref="mySwiper">
+    <swiper :options="swiperOption" ref="mySwiper" v-if="showSwiper">
     <!-- slides -->
     <swiper-slide v-for="item of imgList" :key="item.id">
-      <img class="swiper-image" :src="item.img"><img>
+      <img class="swiper-image" :src="item.imgUrl"><img>
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination"  slot="pagination"></div>
@@ -14,33 +14,34 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    imgList: Array
+  },
   data: function () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop: true
-      },
-      imgList: [
-        { 'id': '1',
-          'img': 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/201910/78b240572657a6da67e662540c846dd6.jpg_750x200_b75c8be9.jpg'
-        },
-        { 'id': '2',
-          'img': 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20198/06e65ace8dce3638e847b04e975489d1.jpg_750x200_a2dcb0a4.jpg'
-        }
-      ]
+        loop: true,
+        autoplay: 2000
+      }
+    }
+  },
+  computed: {
+    // 当数据加载出来以后再创建，否则swiper会默认展示最后一条数据
+    showSwiper () {
+      return this.imgList.length
     }
   }
 }
 </script>
 
 <style lang='stylus' scoped>
-  .swiper >>> .swiper-pagination-bullet-active
+  .wrapper >>> .swiper-pagination-bullet-active
     background: #fff
   .wrapper
     overflow:hidden
     height:0
     width: 100%
-    background: red
     padding-bottom:26.66%    /** 高/宽的比例 */
     .swiper-image
       width: 100%

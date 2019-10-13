@@ -30,6 +30,7 @@ npm install fastclick --save   解决点击事件间隔300毫秒的问题
 npm install stylus --save      样式
 npm install stylus-loader --save  样式
 npm uninstall vue-awesome-swiper@2.6.7 --save   轮播图
+npm install axios --save       网络请求
 
 安装完依赖库需要重启npm  npm run start
 
@@ -56,6 +57,9 @@ variable.styl   // 一些常用的自定义样式
 ##  自定义文件路径别名
 在webpack.base.conf.js 中修改alias 设置成想要的简介路径
 
+## 开发环境网络请求代理配置
+在config/index.js中 proxyTable配置网络请求代理
+
 /****  关于项目结构  ****/
 
 ## 项目结构
@@ -81,9 +85,13 @@ res
         Icon.vue
         Swiper.vue
         Recommend.vue
+        Weekend.vue
   router
     index.js
   App.vue
   main.js
-  static
+  static  (只有该目录下的文件可以被外部访问到)
+    mock
+      home.json
+
 
