@@ -3,7 +3,7 @@
     <router-link tag="div" class="header-abs" v-show="!showNavigation" to="/">>
       <span class="iconfont header-back">&#xe613;</span>
     </router-link>
-    <div class="header-fixed" v-show="showNavigation">
+    <div class="header-fixed" v-show="showNavigation" :style="opacityStyle">
       <span class="iconfont header-fixed-back">&#xe613;</span>景点详情
     </div>
   </div>
@@ -14,13 +14,20 @@ export default {
   name: 'DetailNavigation',
   data () {
     return {
-      showNavigation: false
+      showNavigation: false,
+      opacityStyle: {
+        opacity: 0
+      }
     }
   },
   methods: {
     handleScroll () {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
       if (scrollTop > 60) {
+        const opacity = scrollTop / 140
+        this.opacityStyle = {
+          opacity: (opacity > 1 ? 1 : opacity)
+        }
         this.showNavigation = true
       } else {
         this.showNavigation = false
@@ -30,6 +37,9 @@ export default {
 
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -51,6 +61,7 @@ export default {
       font-size: .4rem
   .header-fixed
     position: fixed
+    z-index: 2
     top: 0
     left: 0
     right: 0
