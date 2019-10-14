@@ -1,19 +1,24 @@
 <template>
   <div>
     <detail-header></detail-header>
+    <detail-navigation></detail-navigation>
+    <div class="bottom"></div>
   </div>
 </template>
 
 <script>
 import DetailHeader from './components/Header'
+import DetailNavigation from './components/Navigation'
 export default {
   name: 'Detail',
   components: {
-    DetailHeader
+    DetailHeader,
+    DetailNavigation
   }
 }
 </script>
 
-<style scoped>
-
+<style lang='stylus' scoped>
+  .bottom
+    height: 50rem
 </style>
