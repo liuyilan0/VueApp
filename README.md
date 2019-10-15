@@ -60,6 +60,9 @@ variable.styl   // 一些常用的自定义样式
 ## 开发环境网络请求代理配置
 在config/index.js中 proxyTable配置网络请求代理
 
+## router
+在router/index.js中 添加scrollBehavior方法，设置页面滚动位置不会相互影响
+
 /****  关于项目结构  ****/
 
 ## 项目结构

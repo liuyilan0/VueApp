@@ -1,6 +1,6 @@
 <template>
   <div>
-    <detail-header></detail-header>
+    <detail-header :bannerImgUrl="bannerImgUrl" :bannerList="bannerList"></detail-header>
     <detail-navigation></detail-navigation>
     <div class="bottom">
       <detail-list :dataList="dataList"></detail-list>
@@ -12,6 +12,7 @@
 import DetailHeader from './components/Header'
 import DetailNavigation from './components/Navigation'
 import DetailList from './components/List'
+import axios from 'axios'
 export default {
   name: 'Detail',
   components: {
@@ -21,65 +22,30 @@ export default {
   },
   data () {
     return {
-      dataList: [
-        {
-          title: '日场票',
-          children: [
-            {
-              title: '奥林匹克塔',
-              children: [
-                {
-                  title: '奥林匹克塔成人票'
-                },
-                {
-                  title: '奥林匹克塔双人票'
-                },
-                {
-                  title: '奥林匹克塔三人票'
-                }
-              ]
-            },
-            {
-              title: '鸟巢',
-              children: [
-                {
-                  title: '鸟巢成人票'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          title: '夜场票',
-          children: [
-            {
-              title: '中国科技馆',
-              children: [
-                {
-                  title: '中国科技馆成人票'
-                },
-                {
-                  title: '中国科技馆双人票'
-                },
-                {
-                  title: '中国科技馆三人票'
-                }
-              ]
-            },
-            {
-              title: '八达岭长城',
-              children: [
-                {
-                  title: '八达岭长城儿童票'
-                },
-                {
-                  title: '八达岭长城成人票'
-                }
-              ]
-            }
-          ]
+      bannerImgUrl: '',
+      bannerList: [],
+      dataList: []
+    }
+  },
+  mounted () {
+    this.getDetailInfo()
+  },
+  methods: {
+    getDetailInfo () {
+      axios.get('/api/detail.json', {
+        params: {
+          id: this.$route.params.id
         }
-      ]
+      }).then(this.getDetailInfoSuccess)
+    },
+    getDetailInfoSuccess (res) {
+      res = res.data
+      if (res && res.data) {
+        const response = res.data
+        this.bannerImgUrl = response.bannerImgUrl
+        this.bannerList = response.bannerList
+        this.dataList = response.dataList
+      }
     }
   }
 }

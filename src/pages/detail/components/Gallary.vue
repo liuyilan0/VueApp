@@ -4,7 +4,7 @@
       <swiper :options="swiperOption">
         <!-- slides -->
         <swiper-slide v-for="(item,index) of imgList" :key="index">
-          <img class="wrapper-img" :src="item"/>
+          <img class="wrapper-img" :src="item.imgUrl"/>
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination"  slot="pagination"></div>
@@ -55,6 +55,7 @@ export default {
     right: 0
     bottom: 0
     background: #000
+    z-index: 99
     .wrapper
       height: 0
       width: 100%

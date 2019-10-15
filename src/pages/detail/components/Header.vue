@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="banner" @click="handleClickBanner">
-      <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1903/5d/5dcaf453dfd6f5dba3.img.jpg_600x330_4f4a22ad.jpg" />
+      <img class="banner-img" :src="bannerImgUrl" />
       <div class="banner-info">
         <div class="banner-intro">
           <span class="iconfont">&#xe600;</span>
@@ -20,12 +20,12 @@ export default {
   name: 'DetailHeader',
   data () {
     return {
-      showGallary: false,
-      bannerList: [
-        'http://img1.qunarzz.com/sight/p0/1903/5d/5dcaf453dfd6f5dba3.img.jpg_r_800x800_226e3ce5.jpg',
-        'http://img1.qunarzz.com/sight/p0/1909/be/be815e733df3a333a3.img.jpg_r_800x800_97254aef.jpg'
-      ]
+      showGallary: false
     }
+  },
+  props: {
+    bannerImgUrl: String,
+    bannerList: Array
   },
   components: {
     DetailGallary
