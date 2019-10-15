@@ -5,17 +5,20 @@
       <div class="banner-info">
         <div class="banner-intro">
           <span class="iconfont">&#xe600;</span>
-          <span class="number">30</span>
+          <span class="number">{{bannerList.length}}</span>
         </div>
-        <div class="banner-title">古北水镇</div>
+        <div class="banner-title">{{intro}}</div>
       </div>
     </div>
-    <detail-gallary v-show="showGallary" :imgList='bannerList' @close="handleClickGallary"></detail-gallary>
+    <fade-animation>
+      <detail-gallary v-show="showGallary" :imgList='bannerList' @close="handleClickGallary"></detail-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
-import DetailGallary from './Gallary'
+import DetailGallary from '@/commmon/gallary/Gallary'
+import FadeAnimation from '@/commmon/fadeAnimation/FadeAnimation'
 export default {
   name: 'DetailHeader',
   data () {
@@ -24,11 +27,13 @@ export default {
     }
   },
   props: {
+    intro: String,
     bannerImgUrl: String,
     bannerList: Array
   },
   components: {
-    DetailGallary
+    DetailGallary,
+    FadeAnimation
   },
   methods: {
     handleClickBanner () {
