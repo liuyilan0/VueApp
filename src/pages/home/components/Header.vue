@@ -50,7 +50,7 @@ export default {
         font-size: .26rem
     .header-right
       float:right
-      width:1.24rem
+      width:1.34rem
       text-align:center
       color: #fff
       .city

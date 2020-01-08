@@ -63,6 +63,15 @@ variable.styl   // 一些常用的自定义样式
 ## router
 在router/index.js中 添加scrollBehavior方法，设置页面滚动位置不会相互影响
 
+## 为了使得webpack支持IP访问，需要在package.json中加入一项配置
+--host 0.0.0.0
+
+## 打包在后台文件中，想修改页面的访问路径
+在config/index.js中，设置assetsPublicPath  例如：'./project'
+
+## 异步组件 按需加载  只有在app.js文件很大的时候才会选择异步按需加载，否则没有必要
+在config/index.js中，设置component: () => import('@pages/home/Home')
+
 /****  关于项目结构  ****/
 
 ## 项目结构
